@@ -112,7 +112,7 @@ impl Matrix {
 			(self.data)
 				.clone()
 				.into_iter()
-				.map(|row| row.into_iter().map(|value| function(value)).collect())
+				.map(|row| row.into_iter().map(function).collect())
 				.collect(),
 		)
 	}
