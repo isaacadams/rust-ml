@@ -8,13 +8,13 @@ use serde_json::{from_str, json};
 
 use super::{activations::Activation, matrix::Matrix};
 
-pub struct Network<'a> {
+pub struct Network {
 	layers: Vec<usize>,
 	weights: Vec<Matrix>,
 	biases: Vec<Matrix>,
 	data: Vec<Matrix>,
 	learning_rate: f64,
-	activation: Activation<'a>,
+	activation: Activation,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -23,12 +23,12 @@ struct SaveData {
 	biases: Vec<Vec<Vec<f64>>>,
 }
 
-impl Network<'_> {
-	pub fn new<'a>(
+impl Network {
+	pub fn new(
 		layers: Vec<usize>,
 		learning_rate: f64,
-		activation: Activation<'a>,
-	) -> Network<'a> {
+		activation: Activation,
+	) -> Network {
 		let mut weights = vec![];
 		let mut biases = vec![];
 
